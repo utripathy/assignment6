@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather API App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/22ce22b6da.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h2><i class="fa fa-map-marker"></i> <span id="location"></span></h2>
+        <h6 id="weather"></h6>
+        <h4><span id="temp"></span><sup>o</sup>C</h4>
+        <img id="icon" src="" alt="" />
+        <button class="refresh" onclick="window.location.reload()">
+          <i class="fa fa-refresh"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      link = 'https://api.openweathermap.org/data/2.5/weather?q=pune&appid=e200a46eb4031ca401240236bf68e288';
+
+      var request = new XMLHttpRequest();
+      request.open('GET', link, true);
+      request.onload = function () {
+        var obj = JSON.parse(this.response);
+        var tempObj = obj.main.temp;
+        document.getElementById('weather').innerHTML = obj.weather[0].description;
+        document.getElementById('location').innerHTML = obj.name;
+        document.getElementById('temp').innerHTML = Math.round(obj.main.temp - 273.1);
+        document.getElementById('icon').src = 'https://openweathermap.org/img/w/' + obj.weather[0].icon + '.png';
+      };
+
+      if (request.status >= 200 && request.status < 400) {
+      } else {
+        console.log('This city data is not available');
+      }
+      request.send();
+    </script>
+  </body>
+</html>
