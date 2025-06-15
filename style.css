@@ -1,52 +1,89 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'poppins';
+  font-family: 'Poppins', sans-serif;
   color: #fff;
   background-color: #343434;
 }
 
 .container {
-  width: 26%;
+  width: 90%;
+  max-width: 25em;
 }
+
 .card {
   border-radius: 2em;
   background-color: #343434;
   box-shadow: 1em 4em 5em #191b1b, -1em -1em 5em #595959;
-  padding: 3%;
+  padding: 2rem;
   text-align: center;
+  overflow: hidden;
 }
 
 .card h4 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: 400;
   margin: 1rem 0;
 }
 
-img #icon {
-  width: 20%;
+img#icon {
+  width: 8em;
+  max-width: 100%;
 }
-h6 #weather {
+
+h6#weather {
   text-transform: capitalize;
+  font-size: 1.2rem;
 }
 
 button.refresh {
   display: block;
   width: 5rem;
+  height: 5rem;
   margin: 1em auto;
   background: transparent;
   border: 0;
   color: #9c9c9d;
   font-size: 2rem;
-  height: 5rem;
   border-radius: 50%;
   box-shadow: 0.1em 0.2em 0.2em #252525, 0.1em 0.4em 4em #4a4a4a;
+  cursor: pointer;
 }
 
 button.refresh:hover {
   box-shadow: inset 0.1em 0.2em 0.2em #252525, inset 0.1em 0.4em 4em #4a4a4a;
+}
+
+@media (max-width: 768px) {
+  .card h4 {
+    font-size: 2rem;
+  }
+
+  button.refresh {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+
+  img#icon {
+    width: 6em;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h4 {
+    font-size: 1.8rem;
+  }
+
+  h6#weather {
+    font-size: 1rem;
+  }
 }
